@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Café Sol - Authentic Barcelona café experience with specialty coffee, fresh pastries, and Mediterranean cuisine in the heart of the city.">
+    <meta name="keywords" content="Barcelona cafe, coffee shop Barcelona, Spanish cafe, Mediterranean cuisine">
+    <meta name="author" content="Café Sol">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Café Sol - Barcelona">
+    <meta property="og:description" content="Experience authentic Barcelona café culture">
+    <meta property="og:type" content="website">
+    
+    <title>Café Sol - Authentic Barcelona Café Experience</title>
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Modern minimalistic color palette */
+            --primary-brown: #BC704A;
+            --primary-purple: #5B3D2E;
+            --cream: #F5F1E8;
+            --cream-dark: #E8E1D3;
+            --text-dark: #2C2520;
+            --text-light: #FFFFFF;
+            --shadow-light: rgba(188, 112, 74, 0.1);
+            --shadow-medium: rgba(91, 61, 46, 0.15);
+            --shadow-strong: rgba(91, 61, 46, 0.25);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Barcelona Street Background - Aerial View */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.15;
+            background-image: 
+                linear-gradient(90deg, transparent 48%, rgba(188, 112, 74, 0.3) 48%, rgba(188, 112, 74, 0.3) 52%, transparent 52%),
+                linear-gradient(0deg, transparent 48%, rgba(188, 112, 74, 0.3) 48%, rgba(188, 112, 74, 0.3) 52%, transparent 52%),
+                linear-gradient(45deg, transparent 45%, rgba(91, 61, 46, 0.2) 45%, rgba(91, 61, 46, 0.2) 55%, transparent 55%),
+                linear-gradient(-45deg, transparent 45%, rgba(91, 61, 46, 0.2) 45%, rgba(91, 61, 46, 0.2) 55%, transparent 55%);
+            background-size: 120px 120px, 120px 120px, 240px 240px, 240px 240px;
+            background-position: 0 0, 0 0, 0 0, 60px 60px;
+        }
+        
+        /* Additional decorative blocks pattern */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.08;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 100px, rgba(230, 57, 70, 0.4) 100px, rgba(230, 57, 70, 0.4) 102px),
+                repeating-linear-gradient(90deg, transparent, transparent 100px, rgba(244, 162, 97, 0.4) 100px, rgba(244, 162, 97, 0.4) 102px);
+        }
+        
+        /* Header Styles - Clean and Minimalistic */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 1rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 30px var(--shadow-medium);
+        }
+        
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        /* Logo Styles */
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary-brown);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-brown);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+        
+        /* Side Navigation Tab - Right Side */
+        .side-nav-tab {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .side-nav-toggle {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-brown);
+            color: var(--text-light);
+            border: none;
+            padding: 30px 15px;
+            cursor: pointer;
+            border-radius: 8px 0 0 8px;
+            font-size: 1.2rem;
+            box-shadow: -4px 0 20px var(--shadow-medium);
+            transition: all 0.3s ease;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+        
+        .side-nav-toggle:hover {
+            background: var(--primary-purple);
+            padding-right: 20px;
+        }
+        
+        .side-nav-content {
+            position: absolute;
+            right: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 12px 0 0 12px;
+            box-shadow: -8px 0 40px var(--shadow-strong);
+            min-width: 280px;
+            opacity: 0;
+            transform: translateX(20px);
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .side-nav-tab.open .side-nav-content {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: all;
+        }
+        
+        .side-nav-tab.open .side-nav-toggle {
+            background: var(--primary-purple);
+        }
+        
+        /* Side Navigation Sections */
+        .side-nav-section {
+            margin-bottom: 35px;
+        }
+        
+        .side-nav-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .side-nav-section h3 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        
+        /* Language Buttons in Side Nav */
+        .side-nav-languages {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .side-lang-btn {
+            flex: 1;
+            background: var(--cream);
+            border: 2px solid var(--cream-dark);
+            color: var(--text-dark);
+            padding: 10px 0;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .side-lang-btn:hover {
+            border-color: var(--primary-brown);
+            background: var(--text-light);
+        }
+        
+        .side-lang-btn.active {
+            background: var(--primary-brown);
+            border-color: var(--primary-brown);
+            color: var(--text-light);
+        }
+        
+        /* Menu Links in Side Nav */
+        .side-nav-menu {
+            list-style: none;
+        }
+        
+        .side-nav-menu li {
+            margin-bottom: 12px;
+        }
+        
+        .side-nav-menu a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        
+        .side-nav-menu a:hover {
+            background: var(--cream);
+            color: var(--primary-brown);
+            padding-left: 20px;
+        }
+        
+        /* Contact Button in Side Nav */
+        .side-contact-btn {
+            width: 100%;
+            background: var(--primary-purple);
+            color: var(--text-light);
+            border: none;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .side-contact-btn:hover {
+            background: var(--primary-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-medium);
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, rgba(245, 241, 232, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
+            padding: 120px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, var(--primary-brown) 0%, transparent 70%);
+            opacity: 0.05;
+            border-radius: 50%;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+        
+        /* Menu Section with Background */
+        .menu-section {
+            max-width: 1400px;
+            margin: 80px auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px var(--shadow-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary-purple);
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .menu-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow-medium);
+        }
+        
+        /* Menu Card Images - Enhanced SVG Illustrations */
+        .menu-card-image {
+            width: 100%;
+            height: 280px;
+            background: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .menu-card-image svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .menu-card-content {
+            padding: 30px;
+        }
+        
+        .menu-card h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--primary-purple);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .menu-card-price {
+            color: var(--primary-brown);
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        .menu-card p {
+            color: var(--text-dark);
+            opacity: 0.7;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+        
+        /* Contact Modal */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 37, 32, 0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .contact-modal-content {
+            background: var(--text-light);
+            border-radius: 16px;
+            padding: 50px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-modal.show .contact-modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-dark);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--cream);
+            color: var(--primary-brown);
+            transform: rotate(90deg);
+        }
+        
+        .contact-modal h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--primary-purple);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--cream-dark);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--cream);
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-brown);
+            background: var(--text-light);
+            box-shadow: 0 0 0 3px var(--shadow-light);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: var(--primary-brown);
+            color: var(--text-light);
+            padding: 16px 50px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-purple);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px var(--shadow-medium);
+        }
+        
+        .success-message {
+            background: var(--primary-brown);
+            color: var(--text-light);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(91, 61, 46, 0.95);
+            backdrop-filter: blur(10px);
+            color: var(--text-light);
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        footer p {
+            margin: 8px 0;
+            opacity: 0.9;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .side-nav-content {
+                min-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .hero {
+                padding: 80px 20px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                letter-spacing: 1px;
+            }
+            
+            .menu-section {
+                padding: 40px 20px;
+                margin: 40px 20px;
+            }
+            
+            .contact-modal-content {
+                padding: 30px 20px;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .side-nav-toggle {
+                padding: 20px 12px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.4rem;
+            }
+            
+            .side-nav-content {
+                min-width: 220px;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-dot"></div>
+                <span>CAFÉ SOL</span>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Side Navigation Tab -->
+    <div class="side-nav-tab" id="sideNav">
+        <button class="side-nav-toggle" onclick="toggleSideNav()" data-i18n="sidenav.menu">
+            MENU
+        </button>
+        
+        <div class="side-nav-content">
+            <!-- Language Section -->
+            <div class="side-nav-section">
+                <h3 data-i18n="sidenav.language">Language</h3>
+                <div class="side-nav-languages">
+                    <button class="side-lang-btn active" data-lang="en">EN</button>
+                    <button class="side-lang-btn" data-lang="de">DE</button>
+                    <button class="side-lang-btn" data-lang="bg">BG</button>
+                </div>
+            </div>
+            
+            <!-- Menu Navigation -->
+            <div class="side-nav-section">
+                <h3 data-i18n="sidenav.navigation">Navigation</h3>
+                <ul class="side-nav-menu">
+                    <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+                    <li><a href="#menu" data-i18n="nav.menu">Menu</a></li>
+                    <li><a href="#footer" data-i18n="nav.about">About</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Button -->
+            <div class="side-nav-section">
+                <h3 data-i18n="sidenav.contact">Contact</h3>
+                <button class="side-contact-btn" onclick="openContactModal()" data-i18n="contact.button">
+                    Get in Touch
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <h1 data-i18n="hero.title">CAFÉ SOL</h1>
+        <p data-i18n="hero.subtitle">Where Barcelona meets artisan coffee culture</p>
+    </section>
+    
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <h2 class="section-title" data-i18n="menu.title">Our Menu</h2>
+        
+        <div class="menu-grid">
+            <!-- Menu Item 1: Spanish Espresso -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="coffeeGrad" cx="50%" cy="50%">
+                                <stop offset="0%" style="stop-color:#3D2817;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#5B3D2E;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="230" rx="85" ry="18" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Saucer -->
+                        <ellipse cx="200" cy="225" rx="90" ry="12" fill="#FFFFFF" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Cup body -->
+                        <path d="M 135 225 Q 135 180 145 145 L 255 145 Q 265 180 265 225 Z" fill="#FFFFFF" stroke="#BC704A" stroke-width="3"/>
+                        <!-- Coffee surface -->
+                        <ellipse cx="200" cy="155" rx="57" ry="10" fill="url(#coffeeGrad)"/>
+                        <!-- Coffee liquid -->
+                        <rect x="143" y="155" width="114" height="65" fill="#5B3D2E" opacity="0.9"/>
+                        <!-- Crema layer -->
+                        <ellipse cx="200" cy="155" rx="55" ry="9" fill="#BC704A" opacity="0.6"/>
+                        <!-- Handle -->
+                        <path d="M 265 175 Q 290 175 295 190 Q 300 205 295 220 Q 290 230 265 230" fill="none" stroke="#BC704A" stroke-width="4"/>
+                        <path d="M 268 178 Q 287 178 291 190 Q 295 202 291 217 Q 287 227 268 227" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+                        <!-- Steam -->
+                        <g opacity="0.4">
+                            <path d="M 175 125 Q 178 105 182 125 Q 185 110 188 125" fill="none" stroke="#BC704A" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 195 120 Q 198 95 202 120 Q 205 100 208 120" fill="none" stroke="#BC704A" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M 215 125 Q 218 105 222 125 Q 225 110 228 125" fill="none" stroke="#BC704A" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+                        <!-- Coffee beans decoration -->
+                        <ellipse cx="250" cy="250" rx="6" ry="8" fill="#5B3D2E" opacity="0.5" transform="rotate(-20 250 250)"/>
+                        <ellipse cx="265" cy="248" rx="5" ry="7" fill="#5B3D2E" opacity="0.5" transform="rotate(15 265 248)"/>
+                        <ellipse cx="140" cy="252" rx="6" ry="8" fill="#5B3D2E" opacity="0.5" transform="rotate(25 140 252)"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item1.name">Spanish Espresso</h3>
+                    <div class="menu-card-price">€2.50</div>
+                    <p data-i18n="menu.item1.description">Rich and bold espresso made from carefully selected Arabica beans, roasted to perfection in the Barcelona tradition.</p>
+                </div>
+            </div>
+            
+            <!-- Menu Item 2: Cappuccino -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="milkFoam" cx="50%" cy="30%">
+                                <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#F5E6D3;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="235" rx="90" ry="20" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Saucer -->
+                        <ellipse cx="200" cy="230" rx="95" ry="13" fill="#FFFFFF" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Cup body - wider than espresso -->
+                        <path d="M 125 230 Q 125 185 135 140 L 265 140 Q 275 185 275 230 Z" fill="#FFFFFF" stroke="#BC704A" stroke-width="3"/>
+                        <!-- Coffee base -->
+                        <rect x="133" y="190" width="134" height="38" fill="#5B3D2E" opacity="0.7"/>
+                        <!-- Milk foam top -->
+                        <ellipse cx="200" cy="150" rx="66" ry="18" fill="url(#milkFoam)"/>
+                        <path d="M 134 150 Q 134 135 145 125 Q 170 115 200 115 Q 230 115 255 125 Q 266 135 266 150" fill="url(#milkFoam)" opacity="0.9"/>
+                        <!-- Latte art - heart shape -->
+                        <path d="M 185 145 Q 180 135 185 130 Q 190 126 195 130 L 200 135 L 205 130 Q 210 126 215 130 Q 220 135 215 145 Q 210 155 200 165 Q 190 155 185 145" fill="#BC704A" opacity="0.6"/>
+                        <!-- Handle -->
+                        <path d="M 275 170 Q 305 170 310 190 Q 315 210 310 225 Q 305 235 275 235" fill="none" stroke="#BC704A" stroke-width="4"/>
+                        <path d="M 278 173 Q 302 173 306 190 Q 310 207 306 222 Q 302 232 278 232" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+                        <!-- Spoon on saucer -->
+                        <ellipse cx="140" cy="235" rx="25" ry="4" fill="#C0C0C0" opacity="0.7"/>
+                        <rect x="130" y="233" width="4" height="35" fill="#C0C0C0" rx="2" opacity="0.7"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item2.name">Cappuccino</h3>
+                    <div class="menu-card-price">€3.80</div>
+                    <p data-i18n="menu.item2.description">Perfectly balanced espresso with velvety steamed milk and crowned with artistic microfoam. A Barcelona favorite.</p>
+                </div>
+            </div>
+            
+            <!-- Menu Item 3: Butter Croissant -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="croissantGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F4D03F;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#D4A574;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#BC8A5F;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="245" rx="130" ry="22" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Plate -->
+                        <ellipse cx="200" cy="235" rx="140" ry="18" fill="#FFFFFF" stroke="#BC704A" stroke-width="2" opacity="0.9"/>
+                        <!-- Main croissant body - curved shape -->
+                        <path d="M 90 190 Q 100 140 130 135 Q 150 132 170 138 Q 190 142 200 145 Q 210 142 230 138 Q 250 132 270 135 Q 300 140 310 190 Q 305 210 295 220 Q 280 230 240 232 Q 220 233 200 232 Q 180 233 160 232 Q 120 230 105 220 Q 95 210 90 190 Z" fill="url(#croissantGrad)" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Layered texture lines -->
+                        <path d="M 120 175 Q 140 168 160 172" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 130 185 Q 150 178 170 182" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 125 195 Q 145 188 165 192" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 180 170 Q 200 165 220 170" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 185 180 Q 205 175 225 180" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 190 190 Q 210 185 230 190" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 235 172 Q 255 168 275 172" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 240 182 Q 260 178 280 182" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <path d="M 238 192 Q 258 188 278 192" fill="none" stroke="#BC704A" stroke-width="2" opacity="0.4"/>
+                        <!-- Air pockets/texture spots -->
+                        <ellipse cx="145" cy="180" rx="9" ry="7" fill="#BC704A" opacity="0.25"/>
+                        <ellipse cx="200" cy="190" rx="8" ry="6" fill="#BC704A" opacity="0.25"/>
+                        <ellipse cx="165" cy="195" rx="7" ry="5" fill="#BC704A" opacity="0.25"/>
+                        <ellipse cx="255" cy="180" rx="10" ry="7" fill="#BC704A" opacity="0.25"/>
+                        <ellipse cx="225" cy="195" rx="8" ry="6" fill="#BC704A" opacity="0.25"/>
+                        <!-- Flaky edges -->
+                        <path d="M 95 200 L 100 195 L 98 190" fill="none" stroke="#D4A574" stroke-width="2" opacity="0.6"/>
+                        <path d="M 305 200 L 300 195 L 302 190" fill="none" stroke="#D4A574" stroke-width="2" opacity="0.6"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item3.name">Butter Croissant</h3>
+                    <div class="menu-card-price">€3.20</div>
+                    <p data-i18n="menu.item3.description">Freshly baked every morning with premium French butter. Flaky, golden, and absolutely delicious.</p>
+                </div>
+            </div>
+            
+            <!-- Menu Item 4: Pan con Tomate -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="breadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D2B48C;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="245" rx="140" ry="28" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Wooden board -->
+                        <rect x="60" y="110" width="280" height="125" rx="8" fill="#8B6F47" opacity="0.3"/>
+                        <path d="M 70 115 L 330 115" stroke="#6B5434" stroke-width="1" opacity="0.4"/>
+                        <path d="M 70 125 L 330 125" stroke="#6B5434" stroke-width="1" opacity="0.4"/>
+                        <!-- Bread slices -->
+                        <rect x="75" y="135" width="115" height="85" rx="12" fill="url(#breadGrad)" stroke="#BC704A" stroke-width="2"/>
+                        <rect x="210" y="135" width="115" height="85" rx="12" fill="url(#breadGrad)" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Toasted texture on bread -->
+                        <rect x="80" y="140" width="105" height="75" rx="10" fill="#C19A6B" opacity="0.4"/>
+                        <rect x="215" y="140" width="105" height="75" rx="10" fill="#C19A6B" opacity="0.4"/>
+                        <!-- Tomato spread -->
+                        <rect x="85" y="145" width="95" height="65" rx="8" fill="#D97B5F" opacity="0.8"/>
+                        <rect x="220" y="145" width="95" height="65" rx="8" fill="#D97B5F" opacity="0.8"/>
+                        <!-- Tomato seeds -->
+                        <circle cx="110" cy="165" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="125" cy="175" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="145" cy="168" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="160" cy="185" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="135" cy="192" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="245" cy="165" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="260" cy="175" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="280" cy="168" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="295" cy="185" r="2" fill="#8B4513" opacity="0.4"/>
+                        <circle cx="270" cy="192" r="2" fill="#8B4513" opacity="0.4"/>
+                        <!-- Olive oil drizzle -->
+                        <path d="M 100 155 Q 105 158 110 155 Q 115 152 120 155" fill="none" stroke="#E6DB74" stroke-width="2" opacity="0.6"/>
+                        <path d="M 150 170 Q 155 173 160 170" fill="none" stroke="#E6DB74" stroke-width="2" opacity="0.6"/>
+                        <path d="M 235 155 Q 240 158 245 155 Q 250 152 255 155" fill="none" stroke="#E6DB74" stroke-width="2" opacity="0.6"/>
+                        <path d="M 285 170 Q 290 173 295 170" fill="none" stroke="#E6DB74" stroke-width="2" opacity="0.6"/>
+                        <!-- Fresh basil leaves -->
+                        <ellipse cx="165" cy="180" rx="18" ry="10" fill="#228B22" opacity="0.5" transform="rotate(-15 165 180)"/>
+                        <ellipse cx="300" cy="190" rx="16" ry="9" fill="#228B22" opacity="0.5" transform="rotate(20 300 190)"/>
+                        <!-- Salt crystals -->
+                        <circle cx="130" cy="160" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+                        <circle cx="150" cy="180" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+                        <circle cx="265" cy="160" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+                        <circle cx="285" cy="180" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item4.name">Pan con Tomate</h3>
+                    <div class="menu-card-price">€4.50</div>
+                    <p data-i18n="menu.item4.description">Traditional Catalan breakfast with toasted bread, ripe tomatoes, olive oil, and a touch of sea salt.</p>
+                </div>
+            </div>
+            
+            <!-- Menu Item 5: Tortilla Española -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="tortillaGrad" cx="50%" cy="40%">
+                                <stop offset="0%" style="stop-color:#F4E4C1;stop-opacity:1" />
+                                <stop offset="60%" style="stop-color:#E8D090;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="245" rx="110" ry="25" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Plate -->
+                        <ellipse cx="200" cy="235" rx="120" ry="16" fill="#FFFFFF" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Tortilla wedge - side view -->
+                        <path d="M 110 235 L 200 130 L 290 235 Z" fill="url(#tortillaGrad)" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Egg texture layers -->
+                        <path d="M 140 210 Q 170 200 200 195 Q 230 200 260 210" fill="none" stroke="#D4A574" stroke-width="2" opacity="0.5"/>
+                        <path d="M 150 220 Q 175 212 200 210 Q 225 212 250 220" fill="none" stroke="#D4A574" stroke-width="2" opacity="0.5"/>
+                        <!-- Potato pieces visible -->
+                        <ellipse cx="170" cy="195" rx="12" ry="8" fill="#F5E6C8" opacity="0.7" transform="rotate(-20 170 195)"/>
+                        <ellipse cx="200" cy="180" rx="14" ry="9" fill="#F5E6C8" opacity="0.7" transform="rotate(15 200 180)"/>
+                        <ellipse cx="230" cy="200" rx="11" ry="7" fill="#F5E6C8" opacity="0.7" transform="rotate(-10 230 200)"/>
+                        <ellipse cx="185" cy="215" rx="10" ry="7" fill="#F5E6C8" opacity="0.7"/>
+                        <ellipse cx="220" cy="218" rx="13" ry="8" fill="#F5E6C8" opacity="0.7" transform="rotate(25 220 218)"/>
+                        <!-- Browned top surface -->
+                        <path d="M 200 130 Q 180 140 165 155 Q 150 175 145 195" fill="none" stroke="#BC704A" stroke-width="3" opacity="0.6"/>
+                        <path d="M 200 130 Q 220 140 235 155 Q 250 175 255 195" fill="none" stroke="#BC704A" stroke-width="3" opacity="0.6"/>
+                        <!-- Golden spots -->
+                        <ellipse cx="195" cy="150" rx="8" ry="5" fill="#BC704A" opacity="0.3"/>
+                        <ellipse cx="180" cy="175" rx="6" ry="4" fill="#BC704A" opacity="0.3"/>
+                        <ellipse cx="215" cy="165" rx="7" ry="5" fill="#BC704A" opacity="0.3"/>
+                        <!-- Fork on plate -->
+                        <line x1="255" y1="235" x2="255" y2="200" stroke="#C0C0C0" stroke-width="3"/>
+                        <line x1="250" y1="200" x2="250" y2="195" stroke="#C0C0C0" stroke-width="2"/>
+                        <line x1="255" y1="200" x2="255" y2="193" stroke="#C0C0C0" stroke-width="2"/>
+                        <line x1="260" y1="200" x2="260" y2="195" stroke="#C0C0C0" stroke-width="2"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item5.name">Tortilla Española</h3>
+                    <div class="menu-card-price">€5.80</div>
+                    <p data-i18n="menu.item5.description">Classic Spanish potato omelette with caramelized onions. Perfectly golden and fluffy, served warm.</p>
+                </div>
+            </div>
+            
+            <!-- Menu Item 6: Churros con Chocolate -->
+            <div class="menu-card">
+                <div class="menu-card-image">
+                    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="churroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#D4A574;stop-opacity:1" />
+                                <stop offset="50%" style="stop-color:#F4D699;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#D4A574;stop-opacity:1" />
+                            </linearGradient>
+                            <radialGradient id="chocolateGrad" cx="50%" cy="50%">
+                                <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#3D2817;stop-opacity:1" />
+                            </radialGradient>
+                        </defs>
+                        <rect fill="#F5F1E8" width="400" height="280"/>
+                        <!-- Shadow -->
+                        <ellipse cx="200" cy="245" rx="140" ry="25" fill="#E8E1D3" opacity="0.6"/>
+                        <!-- Plate -->
+                        <ellipse cx="200" cy="235" rx="145" ry="18" fill="#FFFFFF" stroke="#BC704A" stroke-width="2"/>
+                        <!-- Chocolate cup -->
+                        <ellipse cx="280" cy="180" rx="45" ry="10" fill="#3D2817"/>
+                        <rect x="235" y="180" width="90" height="50" fill="url(#chocolateGrad)"/>
+                        <path d="M 235 180 L 235 230 Q 240 235 280 235 Q 320 235 325 230 L 325 180" fill="url(#chocolateGrad)" stroke="#5B3D2E" stroke-width="2"/>
+                        <ellipse cx="280" cy="180" rx="45" ry="10" fill="#4A2C1A" stroke="#5B3D2E" stroke-width="2"/>
+                        <!-- Churro 1 -->
+                        <rect x="90" y="190" width="120" height="18" rx="9" fill="url(#churroGrad)" stroke="#BC704A" stroke-width="2" transform="rotate(-25 150 199)"/>
+                        <!-- Ridges on churro 1 -->
+                        <line x1="100" y1="195" x2="100" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="110" y1="195" x2="110" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="120" y1="195" x2="120" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="130" y1="195" x2="130" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="140" y1="195" x2="140" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="150" y1="195" x2="150" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="160" y1="195" x2="160" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="170" y1="195" x2="170" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="180" y1="195" x2="180" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="190" y1="195" x2="190" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <line x1="200" y1="195" x2="200" y2="203" stroke="#BC704A" stroke-width="1" opacity="0.5" transform="rotate(-25 150 199)"/>
+                        <!-- Churro 2 -->
+                        <rect x="95" y="210" width="115" height="18" rx="9" fill="url(#churroGrad)" stroke="#BC704A" stroke-width="2" transform="rotate(-15 152 219)"/>
+                        <!-- Sugar crystals on churros -->
+                        <circle cx="120" cy="195" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="140" cy="192" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="160" cy="198" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="125" cy="215" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="145" cy="218" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="165" cy="213" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="180" cy="205" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <circle cx="190" cy="220" r="1.5" fill="#FFFFFF" opacity="0.9"/>
+                        <!-- Chocolate drips in cup -->
+                        <ellipse cx="270" cy="185" rx="8" ry="4" fill="#8B5A3C" opacity="0.4"/>
+                        <ellipse cx="290" cy="187" rx="7" ry="3" fill="#8B5A3C" opacity="0.4"/>
+                    </svg>
+                </div>
+                <div class="menu-card-content">
+                    <h3 data-i18n="menu.item6.name">Churros con Chocolate</h3>
+                    <div class="menu-card-price">€6.50</div>
+                    <p data-i18n="menu.item6.description">Crispy fried churros dusted with cinnamon sugar, served with thick Spanish hot chocolate for dipping.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer id="footer">
+        <p><strong>CAFÉ SOL BARCELONA</strong></p>
+        <p>Carrer de la Rambla, 123 | Barcelona, Spain</p>
+        <p>+34 123 456 789 | info@cafesol.es</p>
+        <p>&copy; 2025 Café Sol. All rights reserved.</p>
+    </footer>
+    
+    <!-- Contact Modal -->
+    <div class="contact-modal" id="contactModal" onclick="closeModalOnBackdrop(event)">
+        <div class="contact-modal-content">
+            <button class="modal-close" onclick="closeContactModal()">&times;</button>
+            <h2 data-i18n="contact.title">Contact Us</h2>
+            
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="name" data-i18n="contact.name">Your Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" data-i18n="contact.email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" data-i18n="contact.message">Message</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn" data-i18n="contact.submit">Send Message</button>
+                
+                <div class="success-message" id="successMessage" data-i18n="contact.success">
+                    Thank you! Your message has been sent successfully.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Translations object with all text content
+        const translations = {
+            en: {
+                "sidenav.menu": "MENU",
+                "sidenav.language": "Language",
+                "sidenav.navigation": "Navigation",
+                "sidenav.contact": "Contact",
+                "nav.home": "Home",
+                "nav.menu": "Menu",
+                "nav.about": "About",
+                "hero.title": "CAFÉ SOL",
+                "hero.subtitle": "Where Barcelona meets artisan coffee culture",
+                "menu.title": "Our Menu",
+                "menu.item1.name": "Spanish Espresso",
+                "menu.item1.description": "Rich and bold espresso made from carefully selected Arabica beans, roasted to perfection in the Barcelona tradition.",
+                "menu.item2.name": "Cappuccino",
+                "menu.item2.description": "Perfectly balanced espresso with velvety steamed milk and crowned with artistic microfoam. A Barcelona favorite.",
+                "menu.item3.name": "Butter Croissant",
+                "menu.item3.description": "Freshly baked every morning with premium French butter. Flaky, golden, and absolutely delicious.",
+                "menu.item4.name": "Pan con Tomate",
+                "menu.item4.description": "Traditional Catalan breakfast with toasted bread, ripe tomatoes, olive oil, and a touch of sea salt.",
+                "menu.item5.name": "Tortilla Española",
+                "menu.item5.description": "Classic Spanish potato omelette with caramelized onions. Perfectly golden and fluffy, served warm.",
+                "menu.item6.name": "Churros con Chocolate",
+                "menu.item6.description": "Crispy fried churros dusted with cinnamon sugar, served with thick Spanish hot chocolate for dipping.",
+                "contact.button": "Get in Touch",
+                "contact.title": "Contact Us",
+                "contact.name": "Your Name",
+                "contact.email": "Email Address",
+                "contact.message": "Message",
+                "contact.submit": "Send Message",
+                "contact.success": "Thank you! Your message has been sent successfully."
+            },
+            de: {
+                "sidenav.menu": "MENÜ",
+                "sidenav.language": "Sprache",
+                "sidenav.navigation": "Navigation",
+                "sidenav.contact": "Kontakt",
+                "nav.home": "Startseite",
+                "nav.menu": "Menü",
+                "nav.about": "Über uns",
+                "hero.title": "CAFÉ SOL",
+                "hero.subtitle": "Wo Barcelona auf Kaffeekultur trifft",
+                "menu.title": "Unsere Speisekarte",
+                "menu.item1.name": "Spanischer Espresso",
+                "menu.item1.description": "Kräftiger und vollmundiger Espresso aus sorgfältig ausgewählten Arabica-Bohnen, nach Barcelonaer Tradition geröstet.",
+                "menu.item2.name": "Cappuccino",
+                "menu.item2.description": "Perfekt ausgewogener Espresso mit samtig aufgeschäumter Milch und kunstvollem Mikroschaum. Ein Barcelona-Favorit.",
+                "menu.item3.name": "Butter-Croissant",
+                "menu.item3.description": "Jeden Morgen frisch gebacken mit Premium-Französischer Butter. Blättrig, golden und absolut köstlich.",
+                "menu.item4.name": "Pan con Tomate",
+                "menu.item4.description": "Traditionelles katalanisches Frühstück mit geröstetem Brot, reifen Tomaten, Olivenöl und einem Hauch Meersalz.",
+                "menu.item5.name": "Tortilla Española",
+                "menu.item5.description": "Klassisches spanisches Kartoffel-Omelett mit karamellisierten Zwiebeln. Perfekt golden und fluffig, warm serviert.",
+                "menu.item6.name": "Churros mit Schokolade",
+                "menu.item6.description": "Knusprige frittierte Churros mit Zimtzucker bestäubt, serviert mit dicker spanischer heißer Schokolade zum Dippen.",
+                "contact.button": "Kontakt aufnehmen",
+                "contact.title": "Kontaktieren Sie uns",
+                "contact.name": "Ihr Name",
+                "contact.email": "E-Mail-Adresse",
+                "contact.message": "Nachricht",
+                "contact.submit": "Nachricht senden",
+                "contact.success": "Vielen Dank! Ihre Nachricht wurde erfolgreich gesendet."
+            },
+            bg: {
+                "sidenav.menu": "МЕНЮ",
+                "sidenav.language": "Език",
+                "sidenav.navigation": "Навигация",
+                "sidenav.contact": "Контакт",
+                "nav.home": "Начало",
+                "nav.menu": "Меню",
+                "nav.about": "За нас",
+                "hero.title": "CAFÉ SOL",
+                "hero.subtitle": "Където Барселона среща занаятчийската кафе култура",
+                "menu.title": "Нашето меню",
+                "menu.item1.name": "Испанско еспресо",
+                "menu.item1.description": "Богато и наситено еспресо, приготвено от внимателно подбрани арабика зърна, изпечени до съвършенство по барселонската традиция.",
+                "menu.item2.name": "Капучино",
+                "menu.item2.description": "Перфектно балансирано еспресо с кадифено изпарено мляко и увенчано с артистична микропяна. Фаворит на Барселона.",
+                "menu.item3.name": "Маслен кроасан",
+                "menu.item3.description": "Прясно изпечен всяка сутрин с първокласно французко масло. Хрупкав, златист и абсолютно вкусен.",
+                "menu.item4.name": "Пан кон томате",
+                "menu.item4.description": "Традиционна каталунска закуска с препечен хляб, зрели домати, зехтин и щипка морска сол.",
+                "menu.item5.name": "Тортиля Еспаньола",
+                "menu.item5.description": "Класическа испанска картофена омлет с карамелизирани лук. Перфектно златиста и пухкава, сервирана топла.",
+                "menu.item6.name": "Churros с шоколад",
+                "menu.item6.description": "Хрупкави пържени churros поръсени със захар с канела, сервирани с гъст испански горещ шоколад за потапяне.",
+                "contact.button": "Свържете се",
+                "contact.title": "Свържете се с нас",
+                "contact.name": "Вашето име",
+                "contact.email": "Имейл адрес",
+                "contact.message": "Съобщение",
+                "contact.submit": "Изпрати съобщение",
+                "contact.success": "Благодарим! Вашето съобщение беше изпратено успешно."
+            }
+        };
+        
+        let currentLang = 'en';
+        
+        // Toggle side navigation
+        function toggleSideNav() {
+            const sideNav = document.getElementById('sideNav');
+            sideNav.classList.toggle('open');
+        }
+        
+        // Close side nav when clicking outside
+        document.addEventListener('click', function(event) {
+            const sideNav = document.getElementById('sideNav');
+            const isClickInside = sideNav.contains(event.target);
+            
+            if (!isClickInside && sideNav.classList.contains('open')) {
+                sideNav.classList.remove('open');
+            }
+        });
+        
+        // Update language function
+        function updateLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang;
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update active language button
+            document.querySelectorAll('.side-lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Save language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Language toggle event listeners
+        document.querySelectorAll('.side-lang-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.getAttribute('data-lang');
+                updateLanguage(lang);
+            });
+        });
+        
+        // Open contact modal
+        function openContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+            
+            // Close side nav when opening modal
+            const sideNav = document.getElementById('sideNav');
+            sideNav.classList.remove('open');
+        }
+        
+        // Close contact modal
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Close modal when clicking on backdrop
+        function closeModalOnBackdrop(event) {
+            if (event.target.id === 'contactModal') {
+                closeContactModal();
+            }
+        }
+        
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeContactModal();
+            }
+        });
+        
+        // Handle form submission
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Log form data (in production, send to server)
+            console.log('Form submitted:', { name, email, message });
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('contactForm').reset();
+            
+            // Hide success message and close modal after 3 seconds
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+                closeContactModal();
+            }, 3000);
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.getElementById('header').offsetHeight;
+                    const targetPosition = target.offsetTop - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close side nav after clicking link
+                    const sideNav = document.getElementById('sideNav');
+                    sideNav.classList.remove('open');
+                }
+            });
+        });
+        
+        // Load saved language preference on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && translations[savedLang]) {
+                updateLanguage(savedLang);
+            }
+        });
+        
+        // Intersection Observer for menu card animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry, index) {
+                if (entry.isIntersecting) {
+                    setTimeout(function() {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+        
+        // Apply animation to menu cards
+        document.querySelectorAll('.menu-card').forEach(function(card) {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
