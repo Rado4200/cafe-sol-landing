@@ -25,10 +25,10 @@
 ![Desktop View - German](web_de.png)
 
 ### Mobile View
-<img src="mobile_en.png" alt="Mobile View" width="300"/>
+<img src="mobile_en.jpg" alt="Mobile View" width="300"/>
 
 ### Contact Modal
-![Contact Form](contact.png)
+![Contact Form](contact.PNG)
 
 </div>
 
